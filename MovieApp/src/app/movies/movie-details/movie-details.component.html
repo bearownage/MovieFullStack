@@ -1,7 +1,6 @@
 <div *ngIf="movie" class="row">
     <div class="col-md-12">
       <h2 *ngIf="movie._id">Movie Details</h2>
-      <h2 *ngIf="!movie._id">New Movie</h2>
     </div>
   </div>
   <div *ngIf="movie" class="row">
@@ -9,18 +8,6 @@
       <div class="form-group">
         <label for="movie-name">Name</label>
         <input class="form-control" name="movie-name" [(ngModel)]="movie.name" placeholder="Name"/>
-      </div>
-      <div class="form-group">
-        <label for="movie-email">Email</label>
-        <input class="form-control" name="movie-email" [(ngModel)]="movie.email" placeholder="support@mlab.com"/>
-      </div>
-      <div class="form-group">
-        <label for="movie-phone-mobile">Mobile</label>
-        <input class="form-control" name="movie-phone-mobile" [(ngModel)]="movie.phone.mobile" placeholder="1234567890"/>
-      </div>
-      <div class="form-group">
-        <label for="movie-phone-work">Work</label>
-        <input class="form-control" name="movie-phone-work" [(ngModel)]="movie.phone.work" placeholder="0123456789"/>
       </div>
       <button class="btn btn-primary" *ngIf="!movie._id" (click)="createMovie(movie)">Create</button>
       <button class="btn btn-info" *ngIf="movie._id" (click)="updateMovie(movie)">Update</button>
