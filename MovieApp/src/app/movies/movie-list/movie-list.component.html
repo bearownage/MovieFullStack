@@ -3,7 +3,7 @@
       <h2>Movies</h2>
       <ul class="list-group">
         <li class="list-group-item"
-          *ngFor="let movie of moviess"
+          *ngFor="let movie of movies"
           (click)="selectMovies(movie)"
           [class.active]="movie === selectedMovies">
           {{movie.name}}
@@ -13,7 +13,7 @@
     </div>
     <div class="col-md-5 col-md-offset-2">
       <movie-details
-        [movie]="selectedMovies"
+        [movie]="selectedMovie"
         [createHandler]="addMovie"
         [updateHandler]="updateMovie"
         [deleteHandler]="deleteMovie">
