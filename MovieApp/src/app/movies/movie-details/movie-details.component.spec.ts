@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../movie';
-import { Movie } from '../movie';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'movie-details',
