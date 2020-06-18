@@ -1,25 +1,42 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { Movie } from '../movie';
+import { Movie } from '../movie';
 
-import { MovieDetailsComponent } from './movie-details.component';
+@Component({
+  selector: 'movie-details',
+  templateUrl: './movie-details.component.html',
+  styleUrls: ['./movie-details.component.css']
+})
 
-describe('MovieDetailsComponent', () => {
-  let component: MovieDetailsComponent;
-  let fixture: ComponentFixture<MovieDetailsComponent>;
+export class MovieDetailsComponent {
+  @Input()
+  movie: Movie;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MovieDetailsComponent ]
-    })
-    .compileComponents();
-  }));
+  @Input()
+  createHandler: Function;
+  @Input()
+  updateHandler: Function;
+  @Input()
+  deleteHandler: Function;
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MovieDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  constructor (private movieService: MovieService) {}
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  createMovie(movie: Movie) {
+    this.movieService.createMovie(movie).then((newMovie: Movie) => {
+      this.createHandler(newMovie);
+    });
+  }
+
+  updateMovie(movie: Movie): void {
+    this.movieService.updateMovie(movie).then((updatedMovie: Movie) => {
+      this.updateHandler(updatedMovie);
+    });
+  }
+
+  deleteMovie(movieId: String): void {
+    this.movieService.deleteMovie(movieId).then((deletedMovieId: String) => {
+      this.deleteHandler(deletedMovieId);
+    });
+  }
+}
+
